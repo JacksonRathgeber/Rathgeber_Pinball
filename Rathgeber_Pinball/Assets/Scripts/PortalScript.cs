@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class PortalScript : MonoBehaviour
 {
-    public GameObject linked_portal;
+    public GameObject[] portals;
     public GameObject ball;
 
+    private GameObject linked_portal;
     private float portal_cooldown = 1f;
     private float cooldown_timer = 0f;
     private bool cooldown_active = false;
@@ -12,7 +13,7 @@ public class PortalScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        portals = GameObject.FindGameObjectsWithTag("Portal");
     }
 
     // Update is called once per frame
@@ -33,14 +34,12 @@ public class PortalScript : MonoBehaviour
     {
         if (!cooldown_active)
         {
+            linked_portal = portals[Random.Range(0, portals.Length)];
             col.transform.position = linked_portal.transform.position;
             cooldown_active = true;
             linked_portal.GetComponent<PortalScript>().cooldown_active = true;
-            Debug.Log("Teleporting!");
-        }
-        else
-        {
-            Debug.Log("Cooldown active!");
+            //Debug.Log("Teleporting!");
+            
         }
     }
 }
