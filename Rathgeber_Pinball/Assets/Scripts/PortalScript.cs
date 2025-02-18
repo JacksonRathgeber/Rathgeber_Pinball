@@ -32,7 +32,7 @@ public class PortalScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (!cooldown_active)
+        if (!cooldown_active && col.gameObject.name == "Ball")
         {
             linked_portal = portals[Random.Range(0, portals.Length)];
             col.transform.position = linked_portal.transform.position;
