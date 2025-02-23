@@ -6,22 +6,25 @@ public class PuncherScript : MonoBehaviour
     public GameObject ball;
     public GameObject fist;
     public KeyCode input_key;
+    public bool is_on_right;
 
-    private float punch_force = 8f;
+    private float punch_force = 6f;
+    private int side_int;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        side_int = is_on_right ? -1 : 1;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.LookAt(ball.transform.position);
         float rot = transform.eulerAngles.x;
-        transform.eulerAngles = new Vector3(0, 0, -rot);
-        fist.transform.eulerAngles = new Vector3(0, 0, -rot);
+        Vector3 rot_vect = new Vector3(0, 0, -rot);
+        transform.eulerAngles = rot_vect;
+        fist.transform.eulerAngles = rot_vect;
 
         if (Input.GetKeyDown(input_key))
         {

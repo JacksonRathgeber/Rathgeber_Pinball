@@ -5,7 +5,7 @@ public class New_Flip : MonoBehaviour
     public KeyCode input_key;
     public bool is_left;
     
-    private float flip_strength = 30f;
+    private float flip_strength = 40f;
     
     Rigidbody2D rb;
     
@@ -16,7 +16,7 @@ public class New_Flip : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKeyDown(input_key))
         {

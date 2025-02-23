@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.375, y: 0.25, z: 1}
+  m_LocalScale: {x: 2.375, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8227914361751424679}
@@ -416,7 +416,7 @@ EdgeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0.25
+  m_EdgeRadius: 0.1
   m_Points:
   - {x: 1.2500806, y: -1.5736545}
   - {x: 1.0379034, y: -1.54816}
