@@ -2958,14 +2958,6 @@ PrefabInstance:
       propertyPath: m_Creator
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 7076037076669678005, guid: 84c996555ea0bbb4bb89a2cfa6bcbab8, type: 3}
-      propertyPath: m_BodyType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7424953399285997516, guid: 84c996555ea0bbb4bb89a2cfa6bcbab8, type: 3}
-      propertyPath: m_TranslationLimits.m_UpperTranslation
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8174430173592088453, guid: 84c996555ea0bbb4bb89a2cfa6bcbab8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.41
@@ -3005,10 +2997,6 @@ PrefabInstance:
     - target: {fileID: 8174430173592088453, guid: 84c996555ea0bbb4bb89a2cfa6bcbab8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8565696773470255913, guid: 84c996555ea0bbb4bb89a2cfa6bcbab8, type: 3}
-      propertyPath: m_Mass
-      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

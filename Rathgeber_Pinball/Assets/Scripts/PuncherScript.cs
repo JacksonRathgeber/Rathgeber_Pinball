@@ -7,7 +7,7 @@ public class PuncherScript : MonoBehaviour
     public GameObject fist;
     public KeyCode input_key;
 
-    private float punch_force = 6f;
+    private float punch_force = 8f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,11 +25,11 @@ public class PuncherScript : MonoBehaviour
 
         if (Input.GetKeyDown(input_key))
         {
-            fist.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, punch_force), ForceMode2D.Impulse);
+            fist.GetComponent<Rigidbody2D>().AddForce(this.transform.right * punch_force, ForceMode2D.Impulse);
         }
         else if (Input.GetKeyUp(input_key))
         {
-            fist.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -punch_force), ForceMode2D.Impulse);
+            fist.GetComponent<Rigidbody2D>().AddForce(-this.transform.right * punch_force, ForceMode2D.Impulse);
         }
     }
 

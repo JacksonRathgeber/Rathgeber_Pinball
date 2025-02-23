@@ -81,7 +81,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374606296465939279}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -141,7 +141,7 @@ SliderJoint2D:
   m_UseLimits: 1
   m_TranslationLimits:
     m_LowerTranslation: 0
-    m_UpperTranslation: 3
+    m_UpperTranslation: 2
 --- !u!1 &6739067651478750926
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +279,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.25
   m_LinearDamping: 0
   m_AngularDamping: 0
   m_GravityScale: 0
