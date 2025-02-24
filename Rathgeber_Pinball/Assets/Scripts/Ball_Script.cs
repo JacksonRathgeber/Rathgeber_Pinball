@@ -12,6 +12,10 @@ public class Ball_Script : MonoBehaviour
     public TextMeshProUGUI score_display;
     public TextMeshProUGUI game_over_text;
 
+    public AudioClip boing_sound;
+    public AudioClip start_sound;
+    public AudioClip game_over_sound;
+
     private float launch_force_min = 5f;
     private float launch_force;
     private float launch_force_max = 8f;
@@ -26,6 +30,8 @@ public class Ball_Script : MonoBehaviour
         start_pos = this.transform.position;
         launch_force = launch_force_min;
         game_over_text.GetComponent<TextMeshProUGUI>().enabled = false;
+
+        this.GetComponent<AudioSource>().PlayOneShot(start_sound, 0.5f);
     }
 
     // Update is called once per frame
@@ -38,10 +44,12 @@ public class Ball_Script : MonoBehaviour
                 transform.position = start_pos;
                 rb.linearVelocity = Vector2.zero;
                 lives -= 1;
+                this.GetComponent<AudioSource>().PlayOneShot(start_sound, 0.5f);
             }
             else
             {
                 game_over_text.GetComponent<TextMeshProUGUI>().enabled = true;
+                this.GetComponent<AudioSource>().PlayOneShot(game_over_sound, 0.5f);
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -61,7 +69,8 @@ public class Ball_Script : MonoBehaviour
             rb.AddForce(col.contacts[0].normal * bump_force, ForceMode2D.Impulse);
             total_points += bumper_points;
             score_display.GetComponent<TMPro.TextMeshProUGUI>().text = total_points.ToString();
-            //Debug.Log("Boing!");
+
+            this.GetComponent<AudioSource>().PlayOneShot(boing_sound, 0.4f);
         }
     }
 

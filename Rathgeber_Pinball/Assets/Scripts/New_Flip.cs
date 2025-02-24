@@ -22,6 +22,8 @@ public class New_Flip : MonoBehaviour
         {
             if (is_left) rb.AddTorque(flip_strength, ForceMode2D.Impulse);
             else rb.AddTorque(-flip_strength, ForceMode2D.Impulse);
+
+            GetComponent<AudioSource>().Play();
         }
         /*
         else if (Input.GetKeyUp(input_key))
