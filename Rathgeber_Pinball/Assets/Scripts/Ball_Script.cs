@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Ball_Script : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Ball_Script : MonoBehaviour
     public KeyCode launch_key;
     public int total_points = 0;
     public TextMeshProUGUI score_display;
+    public TextMeshProUGUI game_over_text;
 
     private float launch_force_min = 5f;
     private float launch_force;
@@ -23,6 +25,7 @@ public class Ball_Script : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         start_pos = this.transform.position;
         launch_force = launch_force_min;
+        game_over_text.GetComponent<TextMeshProUGUI>().enabled = false;
     }
 
     // Update is called once per frame
@@ -35,6 +38,15 @@ public class Ball_Script : MonoBehaviour
                 transform.position = start_pos;
                 rb.linearVelocity = Vector2.zero;
                 lives -= 1;
+            }
+            else
+            {
+                game_over_text.GetComponent<TextMeshProUGUI>().enabled = true;
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+                }
             }
         }
         //Debug.Log(total_points.ToString());

@@ -38,9 +38,8 @@ public class ScoreScript : MonoBehaviour
     {
         if (is_active && col.gameObject.name == "Ball")
         {
-            int total_points = ball.GetComponent<Ball_Script>().total_points;
-            total_points += points_awarded;
-            score_display.GetComponent<TMPro.TextMeshProUGUI>().text = total_points.ToString();
+            ball.GetComponent<Ball_Script>().total_points += points_awarded;
+            score_display.GetComponent<TMPro.TextMeshProUGUI>().text = ball.GetComponent<Ball_Script>().total_points.ToString();
             is_active = false;
         }
     }

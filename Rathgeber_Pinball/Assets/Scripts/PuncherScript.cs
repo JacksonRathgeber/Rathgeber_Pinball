@@ -8,7 +8,7 @@ public class PuncherScript : MonoBehaviour
     public KeyCode input_key;
     public bool is_on_right;
 
-    private float punch_force = 40f;
+    private float punch_force = 20f;
     private int side_int;
     private Vector3 fist_pos;
 
@@ -22,11 +22,7 @@ public class PuncherScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.LookAt(ball.transform.position);
-        float rot = transform.eulerAngles.x;
-        Vector3 rot_vect = new Vector3(0, 0, -rot);
-        transform.eulerAngles = rot_vect;
-        fist.transform.eulerAngles = rot_vect;
+        this.transform.right = ball.transform.position - this.transform.position;
 
         if (Input.GetKey(input_key))
         {
