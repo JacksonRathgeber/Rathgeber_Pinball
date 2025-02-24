@@ -1,22 +1,28 @@
 using UnityEngine;
+using TMPro;
 
 public class Ball_Script : MonoBehaviour
 {
     Rigidbody2D rb;
 
-    public float bump_force = 6f;
+    public float bump_force = 4f;
     public KeyCode launch_key;
+    public int total_points = 0;
+    public TextMeshProUGUI score_display;
 
-    private float launch_force = 0f;
-    private float launch_force_max = 20f;
+    private float launch_force_min = 5f;
+    private float launch_force;
+    private float launch_force_max = 8f;
     private Vector3 start_pos;
     private int lives = 3;
+    private int bumper_points = 20;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         start_pos = this.transform.position;
+        launch_force = launch_force_min;
     }
 
     // Update is called once per frame
@@ -24,13 +30,14 @@ public class Ball_Script : MonoBehaviour
     {
         if (transform.position.y < -12)
         {
-            if (lives > 0)
+            if (lives > 1)
             {
                 transform.position = start_pos;
                 rb.linearVelocity = Vector2.zero;
                 lives -= 1;
             }
         }
+        //Debug.Log(total_points.ToString());
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -40,6 +47,8 @@ public class Ball_Script : MonoBehaviour
             || obj.name == "Bumper")
         {
             rb.AddForce(col.contacts[0].normal * bump_force, ForceMode2D.Impulse);
+            total_points += bumper_points;
+            score_display.GetComponent<TMPro.TextMeshProUGUI>().text = total_points.ToString();
             //Debug.Log("Boing!");
         }
     }
@@ -51,14 +60,14 @@ public class Ball_Script : MonoBehaviour
         {
             if (Input.GetKey(launch_key) && launch_force < launch_force_max)
             {
-                launch_force += Time.deltaTime * 2;
+                launch_force += Time.deltaTime;
                 //Debug.Log("Charging!");
             }
             else if (Input.GetKeyUp(launch_key))
             {
                 rb.AddForce(Vector2.up * launch_force, ForceMode2D.Impulse);
                 //Debug.Log("Launching!");
-                launch_force = 0;
+                launch_force = launch_force_min;
             }
         }
     }

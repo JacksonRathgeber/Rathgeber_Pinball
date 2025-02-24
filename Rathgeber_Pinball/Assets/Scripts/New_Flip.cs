@@ -5,7 +5,7 @@ public class New_Flip : MonoBehaviour
     public KeyCode input_key;
     public bool is_left;
     
-    private float flip_strength = 40f;
+    private float flip_strength = 20f;
     
     Rigidbody2D rb;
     

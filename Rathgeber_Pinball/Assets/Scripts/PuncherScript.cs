@@ -8,13 +8,15 @@ public class PuncherScript : MonoBehaviour
     public KeyCode input_key;
     public bool is_on_right;
 
-    private float punch_force = 6f;
+    private float punch_force = 40f;
     private int side_int;
+    private Vector3 fist_pos;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         side_int = is_on_right ? -1 : 1;
+        fist_pos = fist.transform.position;
     }
 
     // Update is called once per frame
@@ -28,10 +30,12 @@ public class PuncherScript : MonoBehaviour
 
         if (Input.GetKeyDown(input_key))
         {
+            //fist.transform.position = Vector3.Lerp(fist.transform.position, this.transform.position + this.transform.right * 2, 0.3f);
             fist.GetComponent<Rigidbody2D>().AddForce(this.transform.right * punch_force, ForceMode2D.Impulse);
         }
-        else if (Input.GetKeyUp(input_key))
+        if (Input.GetKeyUp(input_key))
         {
+            //fist.transform.position = fist_pos;
             fist.GetComponent<Rigidbody2D>().AddForce(-this.transform.right * punch_force, ForceMode2D.Impulse);
         }
     }
