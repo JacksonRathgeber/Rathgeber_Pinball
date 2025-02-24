@@ -16,7 +16,7 @@ public class New_Flip : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetKeyDown(input_key))
         {

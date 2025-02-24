@@ -28,12 +28,12 @@ public class PuncherScript : MonoBehaviour
         transform.eulerAngles = rot_vect;
         fist.transform.eulerAngles = rot_vect;
 
-        if (Input.GetKeyDown(input_key))
+        if (Input.GetKey(input_key))
         {
             //fist.transform.position = Vector3.Lerp(fist.transform.position, this.transform.position + this.transform.right * 2, 0.3f);
             fist.GetComponent<Rigidbody2D>().AddForce(this.transform.right * punch_force, ForceMode2D.Impulse);
         }
-        if (Input.GetKeyUp(input_key))
+        else if (Vector3.Distance(fist.transform.position, this.transform.position)>0.1)
         {
             //fist.transform.position = fist_pos;
             fist.GetComponent<Rigidbody2D>().AddForce(-this.transform.right * punch_force, ForceMode2D.Impulse);
